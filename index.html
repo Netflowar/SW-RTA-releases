@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SW RTA Companion — Download</title>
+<meta name="description" content="SW RTA Companion — the Summoners War draft companion. Pick / ban help, GW planner, box builder, AI coach. Free download for Mac and Windows.">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --card: #131418;
+    --border: #26272d;
+    --text: #e4e4e7;
+    --muted: #9ca3af;
+    --accent: #fbbf24;
+    --accent-dark: #f59e0b;
+    --mac: #60a5fa;
+    --win: #a78bfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  header { text-align: center; margin-bottom: 48px; max-width: 720px; }
+  h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    font-family: 'Orbitron', sans-serif;
+  }
+  .tagline { color: var(--muted); font-size: 16px; margin-bottom: 16px; }
+  .version-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'SF Mono', Monaco, Consolas, monospace;
+  }
+
+  .detected {
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+  }
+  .detected-label {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .detected-platform {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .downloads {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
+
+  .download-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: border-color 0.15s, transform 0.15s;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .download-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .download-card.primary {
+    border-color: rgba(251, 191, 36, 0.5);
+    background: linear-gradient(180deg, rgba(251, 191, 36, 0.06), transparent);
+  }
+  .download-card.primary:hover { border-color: var(--accent); }
+
+  .icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+  .icon.mac { background: rgba(96, 165, 250, 0.12); color: var(--mac); }
+  .icon.win { background: rgba(167, 139, 250, 0.12); color: var(--win); }
+
+  .card-content { flex: 1; }
+  .card-title { font-size: 16px; font-weight: 600; margin-bottom: 2px; }
+  .card-sub { font-size: 13px; color: var(--muted); }
+  .card-arrow { color: var(--muted); font-size: 20px; }
+
+  .download-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .badge-coming {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: rgba(156, 163, 175, 0.15);
+    border-radius: 999px;
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    vertical-align: middle;
+  }
+
+  .instructions {
+    max-width: 720px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .instructions h2 {
+    font-size: 14px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .install-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .install-block-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--accent);
+  }
+  .install-block p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .install-block p:last-child { margin-bottom: 0; }
+  .install-block code {
+    background: rgba(156, 163, 175, 0.12);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'SF Mono', Monaco, Consolas, monospace;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  footer {
+    max-width: 720px;
+    width: 100%;
+    text-align: center;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--mac); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SW RTA COMPANION</h1>
+  <p class="tagline">The Summoners War draft companion — pick / ban help, GW planner, box builder, AI coach.</p>
+  <span class="version-badge" id="version-badge">v0.14.1</span>
+</header>
+
+<div class="detected" id="detected-box" hidden>
+  <div class="detected-label">We think you're on</div>
+  <div class="detected-platform" id="detected-platform">—</div>
+  <div class="detected-sub" id="detected-sub" style="color: var(--muted); font-size: 13px;"></div>
+</div>
+
+<div class="downloads" id="downloads">
+  <a class="download-card" id="card-mac-arm64" href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.14.1/SW-RTA-Companion-0.14.1-macOS-arm64.dmg">
+    <div class="icon mac">🍎</div>
+    <div class="card-content">
+      <div class="card-title">Download for macOS — Apple Silicon</div>
+      <div class="card-sub">M1 / M2 / M3 / M4 Macs · 114 MB · .dmg</div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+  <a class="download-card" id="card-mac-intel" href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.14.1/SW-RTA-Companion-0.14.1-macOS-x64.dmg">
+    <div class="icon mac">🍎</div>
+    <div class="card-content">
+      <div class="card-title">Download for macOS — Intel</div>
+      <div class="card-sub">Older (pre-2020) Macs · 121 MB · .dmg</div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+  <a class="download-card disabled" id="card-win">
+    <div class="icon win">🪟</div>
+    <div class="card-content">
+      <div class="card-title">Download for Windows<span class="badge-coming">Soon</span></div>
+      <div class="card-sub">Windows 10 / 11 · .exe installer · building now</div>
+    </div>
+    <div class="card-arrow">—</div>
+  </a>
+</div>
+
+<section class="instructions">
+  <h2>Install instructions</h2>
+
+  <div class="install-block">
+    <div class="install-block-title">🍎 macOS (both Apple Silicon and Intel)</div>
+    <p>1. Open the downloaded <code>.dmg</code> and drag the app to Applications.</p>
+    <p>2. <strong>First launch only:</strong> right-click the app → <code>Open</code> → click <code>Open</code> in the warning dialog. After that, it launches normally.</p>
+    <p>3. The first-launch dance exists because the app is signed but not Apple-notarized. Totally safe — Apple just wants $99/year to skip the right-click step. We haven't paid that yet.</p>
+  </div>
+
+  <div class="install-block">
+    <div class="install-block-title">🪟 Windows (coming)</div>
+    <p>1. Run the <code>.exe</code> installer.</p>
+    <p>2. If Windows SmartScreen warns, click <code>More info</code> → <code>Run anyway</code>. Same reason — not yet code-signed on Windows.</p>
+  </div>
+</section>
+
+<footer>
+  Built by <strong>Netflow / Arturo Salva</strong> · <a href="https://github.com/Netflowar/SW-RTA-releases/releases/latest">All releases</a> · <a href="https://github.com/Netflowar/SW-RTA-releases/releases/latest">Release notes</a>
+</footer>
+
+<script>
+  // Auto-detect OS + arch and highlight the right download card.
+  // Uses both the new userAgentData API (Chrome-family) and the
+  // legacy navigator.platform / userAgent heuristics (Safari, Firefox).
+  (async function detect() {
+    const ua = navigator.userAgent || '';
+    const plat = (navigator.platform || '').toLowerCase();
+    let os = 'unknown';   // 'mac' | 'win' | 'unknown'
+    let macArch = null;   // 'arm64' | 'x64' | null
+
+    if (/mac/i.test(plat) || /macintosh/i.test(ua)) os = 'mac';
+    else if (/win/i.test(plat) || /windows/i.test(ua)) os = 'win';
+
+    // Apple Silicon vs Intel: best-effort.
+    // The user-agent has been frozen for privacy, so we use userAgentData
+    // when available and fall back to a WebGL-renderer check (canvas
+    // reveals the GPU vendor, which correlates strongly with arch).
+    if (os === 'mac') {
+      try {
+        if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+          const v = await navigator.userAgentData.getHighEntropyValues(['architecture']);
+          if (v && v.architecture) macArch = v.architecture === 'arm' ? 'arm64' : 'x64';
+        }
+      } catch (e) { /* ignore */ }
+      if (!macArch) {
+        try {
+          const canvas = document.createElement('canvas');
+          const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+          const dbg = gl && gl.getExtension('WEBGL_debug_renderer_info');
+          const renderer = dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : '';
+          if (/apple|m1|m2|m3|m4/i.test(renderer)) macArch = 'arm64';
+          else if (renderer) macArch = 'x64';
+        } catch (e) { /* ignore */ }
+      }
+    }
+
+    const box = document.getElementById('detected-box');
+    const platEl = document.getElementById('detected-platform');
+    const subEl = document.getElementById('detected-sub');
+    const arm = document.getElementById('card-mac-arm64');
+    const intel = document.getElementById('card-mac-intel');
+    const win = document.getElementById('card-win');
+
+    if (os === 'mac') {
+      if (macArch === 'arm64') {
+        box.hidden = false;
+        platEl.textContent = '🍎 macOS — Apple Silicon';
+        subEl.textContent = 'This is the one you want';
+        arm.classList.add('primary');
+      } else if (macArch === 'x64') {
+        box.hidden = false;
+        platEl.textContent = '🍎 macOS — Intel';
+        subEl.textContent = 'This is the one you want';
+        intel.classList.add('primary');
+      } else {
+        box.hidden = false;
+        platEl.textContent = '🍎 macOS';
+        subEl.textContent = "Not sure of your arch — Apple Silicon is right for any Mac from 2020 on.";
+        arm.classList.add('primary');
+      }
+    } else if (os === 'win') {
+      box.hidden = false;
+      platEl.textContent = '🪟 Windows';
+      subEl.textContent = 'Windows installer being built — refresh this page in a few minutes, or watch the release page.';
+    } else {
+      box.hidden = false;
+      platEl.textContent = 'Unknown platform';
+      subEl.textContent = "Pick the right installer below for your system.";
+    }
+  })();
+</script>
+
+</body>
+</html>
