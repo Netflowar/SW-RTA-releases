@@ -146,21 +146,21 @@
             <a
               class="btn btn-primary btn-lg"
               id="btn-mac"
-              href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.15.0/SW-RTA-Companion-0.15.0-macOS-arm64.dmg"
+              href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-macOS-arm64.dmg"
               rel="noopener"
               data-platform="mac"
             >Download for macOS</a>
             <a
               class="btn btn-secondary btn-lg"
               id="btn-win"
-              href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.15.0/SW-RTA-Companion-0.15.0-Windows-Setup.exe"
+              href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-Windows-Setup.exe"
               rel="noopener"
               data-platform="win"
             >Download for Windows</a>
           </div>
 
           <p class="download-alt">
-            <span id="alt-mac-intel">On an older (pre-2020) Intel Mac? <a href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.15.0/SW-RTA-Companion-0.15.0-macOS-x64.dmg">Grab the Intel build instead.</a></span>
+            <span id="alt-mac-intel">On an older (pre-2020) Intel Mac? <a href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-macOS-x64.dmg">Grab the Intel build instead.</a></span>
           </p>
 
           <p class="pricing-foot">
@@ -230,9 +230,9 @@
         } else if (os === "mac") {
           if (macArch === "x64") {
             // Intel Mac detected — flip the default.
-            btnMac.href = "https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.15.0/SW-RTA-Companion-0.15.0-macOS-x64.dmg";
+            btnMac.href = "https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-macOS-x64.dmg";
             btnMac.textContent = "Download for macOS (Intel)";
-            if (altMacIntel) altMacIntel.innerHTML = 'On an Apple Silicon Mac? <a href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.15.0/SW-RTA-Companion-0.15.0-macOS-arm64.dmg">Grab the Apple Silicon build instead.</a>';
+            if (altMacIntel) altMacIntel.innerHTML = 'On an Apple Silicon Mac? <a href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-macOS-arm64.dmg">Grab the Apple Silicon build instead.</a>';
           } else if (macArch === "arm64") {
             btnMac.textContent = "Download for macOS (Apple Silicon)";
           }
