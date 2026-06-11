@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SW RTA Draft Companion — RTA, Guild War, and box building with synergy</title>
     <meta name="description" content="Summoners War planning app for RTA pick/ban, Guild War defense + offense, and building a box around the monsters you love to play." />
+    <link rel="canonical" href="https://netflowar.github.io/SW-RTA-releases/" />
     <meta property="og:title" content="SW RTA Draft Companion" />
-    <meta property="og:description" content="RTA, Guild War, and box building with synergy. Offline-first, free for 30 days." />
+    <meta property="og:description" content="RTA, Guild War, and box building with synergy. Free while in beta." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/hero-draft.png" />
+    <meta property="og:url" content="https://netflowar.github.io/SW-RTA-releases/" />
+    <meta property="og:image" content="https://netflowar.github.io/SW-RTA-releases/assets/hero-draft.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="SW RTA Draft Companion" />
-    <meta name="twitter:description" content="RTA, Guild War, and box building with synergy. Offline-first." />
-    <meta name="twitter:image" content="assets/hero-draft.png" />
+    <meta name="twitter:description" content="RTA, Guild War, and box building with synergy. Free while in beta." />
+    <meta name="twitter:image" content="https://netflowar.github.io/SW-RTA-releases/assets/hero-draft.png" />
     <meta name="theme-color" content="#0b0d12" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
@@ -43,7 +45,7 @@
             </p>
             <div class="cta-row">
               <a class="btn btn-primary" href="#download">Download free</a>
-              <span class="cta-note">30 days free · €3/month or <strong>€15 lifetime (launch price)</strong></span>
+              <span class="cta-note">Free while in beta · €3/month with 30 days free when subscriptions launch</span>
             </div>
           </div>
 
@@ -60,16 +62,13 @@
         </div>
       </section>
 
-      <!-- DEMO VIDEO -->
+      <!-- DEMO VIDEO (coming soon) -->
       <section class="demo">
         <div class="container">
-          <h2 class="section-title">See it in 90 seconds</h2>
-          <div class="video-frame video-placeholder" aria-label="Demo video coming soon">
-            <div class="video-placeholder-inner">
-              <span class="play-mark" aria-hidden="true">▶</span>
-              <p>Demo clip coming soon</p>
-            </div>
-          </div>
+          <h2 class="section-title">See it in action</h2>
+          <p class="demo-note">
+            Demo video coming soon — the screenshots above and below are from the current build.
+          </p>
         </div>
       </section>
 
@@ -109,42 +108,72 @@
         </div>
       </section>
 
+      <!-- REPLAY DATA -->
+      <section class="replays">
+        <div class="container replays-inner">
+          <div class="replays-copy">
+            <h2>Backed by community replay data</h2>
+            <p>
+              Pick and ban suggestions are grounded in win rates from thousands of real RTA
+              replays — see which monsters actually win games, not just which ones look good
+              on paper.
+            </p>
+          </div>
+          <figure class="replays-shot">
+            <img
+              src="assets/top-winners.png"
+              alt="Top winners panel ranking monsters by real win rates"
+              loading="lazy"
+              width="1780"
+              height="470"
+            />
+            <figcaption>Top winners, ranked by win rate from community replays.</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <!-- PRICING + DOWNLOAD -->
       <section class="pricing" id="download">
         <div class="container pricing-inner">
-          <h2>Try it free for 30 days</h2>
-          <p class="pricing-sub">Then €3/month — or €19 once, lifetime.</p>
-
-          <div class="launch-banner" role="note">
-            <span class="launch-pill">Launch price</span>
-            <span class="launch-text">
-              First 100 buyers get lifetime for <strong>€15</strong> (save €4). Then it goes to €19.
-            </span>
-          </div>
+          <h2>Free while in beta</h2>
+          <p class="pricing-sub">
+            When subscriptions launch, the app will be <strong>€3/month with 30 days free</strong>.
+            Until then, everything is free.
+          </p>
 
           <div class="download-row">
             <a
               class="btn btn-primary btn-lg"
               id="btn-mac"
-              href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-macOS-arm64.dmg"
+              href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.15/SW-RTA-Companion-0.17.15-macOS-arm64.dmg"
               rel="noopener"
               data-platform="mac"
             >Download for macOS</a>
             <a
               class="btn btn-secondary btn-lg"
               id="btn-win"
-              href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-Windows-Setup.exe"
+              href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.8/SW-RTA-Companion-0.17.8-Windows-Setup.exe"
               rel="noopener"
               data-platform="win"
             >Download for Windows</a>
           </div>
 
           <p class="download-alt">
-            <span id="alt-mac-intel">On an older (pre-2020) Intel Mac? <a href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-macOS-x64.dmg">Grab the Intel build instead.</a></span>
+            <span id="alt-mac-intel">On an older (pre-2020) Intel Mac? <a href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.15/SW-RTA-Companion-0.17.15-macOS-x64.dmg">Grab the Intel build instead.</a></span>
+          </p>
+
+          <p class="download-note" id="win-note">
+            Note: the newest Windows installer is v0.17.8 — older than the current macOS build (v0.17.15).
           </p>
 
           <p class="pricing-foot">
-            Runs offline. No account required. First launch on macOS: right-click the app &rarr; Open &rarr; Open (one-time; app is signed but not yet notarized).
+            Core features run offline — monster portraits load from the network. No account required.
+          </p>
+          <p class="pricing-foot">
+            First launch on macOS: the app is currently unsigned, so macOS will warn.
+            On macOS 15 (Sequoia) or newer: open the app once, dismiss the warning, then go to
+            System Settings &rarr; Privacy &amp; Security and click &ldquo;Open Anyway&rdquo;.
+            On older macOS: right-click the app &rarr; Open &rarr; Open. One-time either way.
           </p>
         </div>
       </section>
@@ -156,7 +185,9 @@
         <nav>
           <a href="#top">Top</a>
           <a href="https://github.com/Netflowar/SW-RTA-releases/releases/latest">All releases</a>
-          <a href="mailto:hello@swrta.app">Contact</a>
+          <!-- TODO: restore a mailto once the swrta.app domain + mail routing actually exist
+               (hello@swrta.app has no DNS records today, so mail to it silently bounces). -->
+          <a href="https://github.com/Netflowar/SW-RTA-releases/issues">Contact / Issues</a>
         </nav>
       </div>
     </footer>
@@ -165,13 +196,25 @@
       document.getElementById("year").textContent = new Date().getFullYear();
 
       // Auto-detect OS + arch and retarget the primary download button
-      // to the right platform. Best-effort: userAgentData where available,
-      // WebGL renderer string as a fallback (catches "Apple M1/M2/M3/M4"
-      // for Apple-silicon Macs).
+      // to the right platform, then resolve the newest downloadable builds
+      // from the GitHub releases API. Arch detection is best-effort:
+      // userAgentData where available, WebGL renderer string as a fallback
+      // (catches "Apple M1/M2/M3/M4" for Apple-silicon Macs).
       (async function detect() {
         const btnMac = document.getElementById("btn-mac");
         const btnWin = document.getElementById("btn-win");
         const altMacIntel = document.getElementById("alt-mac-intel");
+        const winNote = document.getElementById("win-note");
+
+        // Latest-known direct links — also the static no-JS hrefs above.
+        // Used as-is when the GitHub API is unreachable or rate-limited.
+        const links = {
+          macArm: "https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.15/SW-RTA-Companion-0.17.15-macOS-arm64.dmg",
+          macX64: "https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.15/SW-RTA-Companion-0.17.15-macOS-x64.dmg",
+          win: "https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.8/SW-RTA-Companion-0.17.8-Windows-Setup.exe",
+          macTag: "v0.17.15",
+          winTag: "v0.17.8",
+        };
 
         const ua = navigator.userAgent || "";
         const plat = (navigator.platform || "").toLowerCase();
@@ -208,14 +251,73 @@
           btnMac.classList.add("btn-secondary");
           if (altMacIntel) altMacIntel.style.display = "none";
         } else if (os === "mac") {
-          if (macArch === "x64") {
-            // Intel Mac detected — flip the default.
-            btnMac.href = "https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-macOS-x64.dmg";
-            btnMac.textContent = "Download for macOS (Intel)";
-            if (altMacIntel) altMacIntel.innerHTML = 'On an Apple Silicon Mac? <a href="https://github.com/Netflowar/SW-RTA-releases/releases/download/v0.17.6/SW-RTA-Companion-0.17.6-macOS-arm64.dmg">Grab the Apple Silicon build instead.</a>';
-          } else if (macArch === "arm64") {
-            btnMac.textContent = "Download for macOS (Apple Silicon)";
+          if (macArch === "x64") btnMac.textContent = "Download for macOS (Intel)";
+          else if (macArch === "arm64") btnMac.textContent = "Download for macOS (Apple Silicon)";
+        }
+
+        // Point the buttons at whatever `links` currently holds. Runs once
+        // with the latest-known links, and again if the API resolves newer.
+        function applyLinks() {
+          const macMain = macArch === "x64" ? links.macX64 : links.macArm;
+          const macAlt = macArch === "x64" ? links.macArm : links.macX64;
+          btnMac.href = macMain;
+          btnWin.href = links.win;
+          if (altMacIntel) {
+            altMacIntel.innerHTML = macArch === "x64"
+              ? 'On an Apple Silicon Mac? <a href="' + macAlt + '">Grab the Apple Silicon build instead.</a>'
+              : 'On an older (pre-2020) Intel Mac? <a href="' + macAlt + '">Grab the Intel build instead.</a>';
           }
+          if (winNote) {
+            winNote.textContent = "Note: the newest Windows installer is " + links.winTag +
+              " — older than the current macOS build (" + links.macTag + ").";
+            winNote.hidden = links.winTag === links.macTag;
+          }
+        }
+        applyLinks();
+
+        // Fetch the releases list (cached per tab in sessionStorage). Recent
+        // releases are macOS-only, so the Windows link walks back to the
+        // newest release that actually ships a -Windows-Setup.exe.
+        async function loadReleases() {
+          const KEY = "sw-rta-releases-v1";
+          try {
+            const cached = sessionStorage.getItem(KEY);
+            if (cached) return JSON.parse(cached);
+          } catch (e) { /* ignore */ }
+          const res = await fetch("https://api.github.com/repos/Netflowar/SW-RTA-releases/releases?per_page=30");
+          if (!res.ok) throw new Error("GitHub API " + res.status);
+          const full = await res.json();
+          // Keep only what we use so the cache stays small.
+          const slim = (Array.isArray(full) ? full : [])
+            .filter((r) => r && !r.draft && !r.prerelease)
+            .map((r) => ({
+              tag: r.tag_name,
+              assets: (r.assets || []).map((a) => ({ name: a.name, url: a.browser_download_url })),
+            }));
+          try { sessionStorage.setItem(KEY, JSON.stringify(slim)); } catch (e) { /* ignore */ }
+          return slim;
+        }
+
+        try {
+          const releases = await loadReleases();
+          const assetUrl = (rel, suffix) => {
+            const hit = (rel.assets || []).find((a) => a.name && a.name.endsWith(suffix));
+            return hit ? hit.url : null;
+          };
+          const macRel = releases.find((r) => assetUrl(r, "-macOS-arm64.dmg"));
+          const winRel = releases.find((r) => assetUrl(r, "-Windows-Setup.exe"));
+          if (macRel) {
+            links.macArm = assetUrl(macRel, "-macOS-arm64.dmg");
+            links.macX64 = assetUrl(macRel, "-macOS-x64.dmg") || links.macX64;
+            links.macTag = macRel.tag;
+          }
+          if (winRel) {
+            links.win = assetUrl(winRel, "-Windows-Setup.exe");
+            links.winTag = winRel.tag;
+          }
+          if (macRel || winRel) applyLinks();
+        } catch (e) {
+          // API unreachable — the latest-known links above still work.
         }
       })();
     </script>

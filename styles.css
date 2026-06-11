@@ -272,37 +272,15 @@ p {
   object-fit: cover;
 }
 
-.video-placeholder {
-  background:
-    radial-gradient(600px 200px at 50% 50%, rgba(111, 157, 255, 0.12), transparent 60%),
-    #0f121a;
-  border-color: #1d2333;
-}
-
-.video-placeholder-inner {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  gap: 14px;
-  grid-auto-flow: row;
+.demo-note {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  border-radius: 12px;
+  background: #0f121a;
+  border: 1px solid #1d2333;
   color: #7e89a0;
-}
-
-.video-placeholder-inner .play-mark {
-  width: 72px;
-  height: 72px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: rgba(111, 157, 255, 0.12);
-  color: #8ab4ff;
-  font-size: 1.6rem;
-  padding-left: 6px;
-}
-
-.video-placeholder-inner p {
-  margin: 0;
+  text-align: center;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -395,6 +373,14 @@ p {
   background: #11151f;
 }
 
+.replays-shot figcaption {
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: #7e89a0;
+  border-top: 1px solid #1d2333;
+  background: #0f121a;
+}
+
 /* -------- Pricing / download -------- */
 .pricing {
   padding: 80px 0;
@@ -404,38 +390,8 @@ p {
 .pricing-sub {
   color: #b7c0d2;
   font-size: 1.05rem;
-  margin-bottom: 1.25rem;
-}
-
-.launch-banner {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 auto 2rem;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: rgba(111, 157, 255, 0.1);
-  border: 1px solid rgba(111, 157, 255, 0.3);
-  color: #c7d4f2;
-  font-size: 0.92rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.launch-pill {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: #6f9dff;
-  color: #0b0d12;
-  font-weight: 700;
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.launch-text strong {
-  color: #fff;
+  max-width: 56ch;
+  margin: 0 auto 1.75rem;
 }
 
 .download-row {
@@ -458,11 +414,22 @@ p {
   text-underline-offset: 2px;
 }
 
+.download-note {
+  color: #8792aa;
+  font-size: 0.85rem;
+  max-width: 56ch;
+  margin: 0 auto 1.25rem;
+}
+
 .pricing-foot {
   color: #7e89a0;
   font-size: 0.9rem;
   max-width: 56ch;
   margin: 0 auto;
+}
+
+.pricing-foot + .pricing-foot {
+  margin-top: 0.6rem;
 }
 
 /* -------- Footer -------- */
