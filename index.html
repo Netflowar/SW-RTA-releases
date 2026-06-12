@@ -15,7 +15,7 @@
     <meta name="twitter:title" content="SW RTA Draft Companion" />
     <meta name="twitter:description" content="RTA, Guild War, and box building with synergy. Free while in beta." />
     <meta name="twitter:image" content="https://netflowar.github.io/SW-RTA-releases/assets/hero-draft.png" />
-    <meta name="theme-color" content="#0b0d12" />
+    <meta name="theme-color" content="#0A0B0E" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -23,7 +23,12 @@
     <header class="nav">
       <div class="container nav-inner">
         <a class="brand" href="#top" aria-label="SW RTA Draft Companion">
-          <span class="brand-mark" aria-hidden="true">◆</span>
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+              <path d="M12 3l8 9-8 9-8-9 8-9z" />
+              <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+            </svg>
+          </span>
           <span class="brand-name">SW RTA</span>
           <span class="brand-sub">Draft Companion</span>
         </a>
@@ -35,7 +40,7 @@
       <!-- HERO -->
       <section class="hero">
         <div class="container hero-inner">
-          <div class="hero-copy">
+          <div class="hero-copy rise">
             <p class="eyebrow">For Summoners War RTA &amp; Guild War players</p>
             <h1>RTA, Guild War, and boxes built around the mons you love to play.</h1>
             <p class="lead">
@@ -45,11 +50,11 @@
             </p>
             <div class="cta-row">
               <a class="btn btn-primary" href="#download">Download free</a>
-              <span class="cta-note">Free while in beta · €3/month with 30 days free when subscriptions launch</span>
+              <span class="cta-note">Free while in beta · <span class="num">€3/month</span> with <span class="num">30</span> days free when subscriptions launch</span>
             </div>
           </div>
 
-          <figure class="hero-shot">
+          <figure class="hero-shot rise" style="animation-delay: 60ms">
             <img
               src="assets/hero-draft.png"
               alt="RTA draft screen with pick and ban suggestions"
@@ -65,7 +70,10 @@
       <!-- DEMO VIDEO (coming soon) -->
       <section class="demo">
         <div class="container">
-          <h2 class="section-title">See it in action</h2>
+          <div class="section-head">
+            <h2 class="section-head__text">See it in action</h2>
+            <span class="section-head__rule" aria-hidden="true"></span>
+          </div>
           <p class="demo-note">
             Demo video coming soon — the screenshots above and below are from the current build.
           </p>
@@ -75,28 +83,49 @@
       <!-- FEATURES -->
       <section class="features">
         <div class="container">
-          <h2 class="section-title">Three modes, one companion</h2>
+          <div class="section-head">
+            <h2 class="section-head__text">Three modes, one companion</h2>
+            <span class="section-head__rule" aria-hidden="true"></span>
+          </div>
           <ul class="feature-list" role="list">
-            <li class="feature">
-              <div class="feature-icon" aria-hidden="true">◆</div>
+            <li class="feature feature--rta">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                  <circle cx="12" cy="12" r="6.5" />
+                  <path d="M12 2.5v3.5M12 18v3.5M2.5 12H6M18 12h3.5" />
+                  <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
               <h3>RTA draft companion</h3>
               <p>
-                Live pick and ban help through the full 5v5 draft. Suggestions respect phase,
+                Live pick and ban help through the full <span class="num">5v5</span> draft. Suggestions respect phase,
                 bans, and who's already on the board. And every suggestion is filtered by what's
                 actually in your box.
               </p>
             </li>
-            <li class="feature">
-              <div class="feature-icon" aria-hidden="true">◆</div>
+            <li class="feature feature--gw">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l7 2.8v5.4c0 4.3-2.9 7.5-7 9.8-4.1-2.3-7-5.5-7-9.8V5.8L12 3z" />
+                  <path d="M12 7.5v9" />
+                </svg>
+              </div>
               <h3>Guild War — defense + offense</h3>
               <p>
-                Build 3v3 defenses from your roster that other players will struggle to beat. Or
+                Build <span class="num">3v3</span> defenses from your roster that other players will struggle to beat. Or
                 face a known enemy defense and get counter teams ranked for your exact box.
                 Track your personal wins and losses across every defense you've faced.
               </p>
             </li>
-            <li class="feature">
-              <div class="feature-icon" aria-hidden="true">◆</div>
+            <li class="feature feature--box">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="5.5" r="2.4" />
+                  <circle cx="5.5" cy="17.5" r="2.4" />
+                  <circle cx="18.5" cy="17.5" r="2.4" />
+                  <path d="M10.9 7.6l-4.2 7.8M13.1 7.6l4.2 7.8M8 17.5h8" />
+                </svg>
+              </div>
               <h3>Box building with synergy</h3>
               <p>
                 Pick the monsters you love to play — one to five of them — and the app fills out
@@ -112,6 +141,7 @@
       <section class="replays">
         <div class="container replays-inner">
           <div class="replays-copy">
+            <p class="eyebrow">The data underneath</p>
             <h2>Backed by community replay data</h2>
             <p>
               Pick and ban suggestions are grounded in win rates from thousands of real RTA
@@ -135,9 +165,10 @@
       <!-- PRICING + DOWNLOAD -->
       <section class="pricing" id="download">
         <div class="container pricing-inner">
+          <p class="eyebrow">Pricing</p>
           <h2>Free while in beta</h2>
           <p class="pricing-sub">
-            When subscriptions launch, the app will be <strong>€3/month with 30 days free</strong>.
+            When subscriptions launch, the app will be <strong><span class="num">€3/month</span> with <span class="num">30</span> days free</strong>.
             Until then, everything is free.
           </p>
 
@@ -166,22 +197,24 @@
             Note: the newest Windows installer is v0.17.8 — older than the current macOS build (v0.17.15).
           </p>
 
-          <p class="pricing-foot">
-            Core features run offline — monster portraits load from the network. No account required.
-          </p>
-          <p class="pricing-foot">
-            First launch on macOS: the app is currently unsigned, so macOS will warn.
-            On macOS 15 (Sequoia) or newer: open the app once, dismiss the warning, then go to
-            System Settings &rarr; Privacy &amp; Security and click &ldquo;Open Anyway&rdquo;.
-            On older macOS: right-click the app &rarr; Open &rarr; Open. One-time either way.
-          </p>
+          <div class="install-foot">
+            <p class="pricing-foot">
+              Core features run offline — monster portraits load from the network. No account required.
+            </p>
+            <p class="pricing-foot">
+              First launch on macOS: the app is currently unsigned, so macOS will warn.
+              On macOS <span class="num">15</span> (Sequoia) or newer: open the app once, dismiss the warning, then go to
+              System Settings &rarr; Privacy &amp; Security and click &ldquo;Open Anyway&rdquo;.
+              On older macOS: right-click the app &rarr; Open &rarr; Open. One-time either way.
+            </p>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="foot">
       <div class="container foot-inner">
-        <p>© <span id="year"></span> SW RTA Draft Companion. Not affiliated with Com2uS.</p>
+        <p>© <span id="year" class="num"></span> SW RTA Draft Companion. Not affiliated with Com2uS.</p>
         <nav>
           <a href="#top">Top</a>
           <a href="https://github.com/Netflowar/SW-RTA-releases/releases/latest">All releases</a>

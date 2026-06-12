@@ -1,4 +1,83 @@
+/* ==========================================================================
+   ANALYST DESK — landing page
+   The storefront sibling of the app's design system. Tokens, fonts, and
+   atmosphere mirror src/styles/global.css in the app repo.
+   ========================================================================== */
+
+/* -------- Fonts (bundled locally — never loaded from Google) -------- */
+
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/rajdhani-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/fonts/rajdhani-700.woff2") format("woff2");
+}
+
+/* IBM Plex Sans ships as a variable font — one file covers 400/500/600. */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 100 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("assets/fonts/ibm-plex-sans-var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/ibm-plex-mono-500.woff2") format("woff2");
+}
+
+/* -------- Tokens -------- */
+
+:root {
+  /* Surfaces */
+  --bg0: #0a0b0e;
+  --bg1: #101218;
+  --bg2: #161a22;
+  --bg3: #1d2230;
+
+  /* Hairlines */
+  --hairline: rgba(255, 255, 255, 0.06);
+  --hairline-hover: rgba(255, 255, 255, 0.1);
+
+  /* Text */
+  --text: #eceef4;
+  --text-2: #a6adbf;
+  --text-3: #707689;
+
+  /* Brand accent — brass, used sparingly. */
+  --brass: #e8b45a;
+
+  /* Mode accents (one per feature card) */
+  --accent-rta: #d8434e;
+  --accent-gw: #4e9cf5;
+  --accent-box: #46b58a;
+
+  /* Type */
+  --font-display: "Rajdhani", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", "Menlo", monospace;
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --t: 160ms var(--ease);
+}
+
 /* -------- Reset & base -------- */
+
 *,
 *::before,
 *::after {
@@ -7,18 +86,44 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg0);
 }
 
 body {
   margin: 0;
-  font-family:
-    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
-  color: #e7eaf1;
-  background: #0b0d12;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text);
+  background: transparent; /* atmosphere shows through — see body::before */
   line-height: 1.55;
+  font-size: 15px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Atmospheric depth — never flat black. A faint warm crown at the top,
+   an edge vignette, and ~2.5% SVG feTurbulence grain. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")
+      repeat,
+    radial-gradient(1100px 640px at 50% -12%, rgba(232, 180, 90, 0.05), transparent 62%),
+    radial-gradient(140% 110% at 50% 45%, transparent 52%, rgba(0, 0, 0, 0.42) 100%);
+}
+
+::selection {
+  background: var(--brass);
+  color: var(--bg0);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
 }
 
 img,
@@ -29,39 +134,47 @@ video {
 }
 
 a {
-  color: #8ab4ff;
+  color: var(--text-2);
   text-decoration: none;
+  transition: color var(--t);
 }
 
 a:hover {
-  color: #b3cbff;
+  color: var(--text);
 }
 
 h1,
 h2,
 h3 {
   margin: 0 0 0.5em;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  line-height: 1.08;
+  letter-spacing: 0.005em;
 }
 
 h1 {
-  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  font-size: clamp(2.1rem, 4.4vw, 3.5rem);
   font-weight: 700;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-size: clamp(1.5rem, 2.6vw, 2.05rem);
   font-weight: 700;
 }
 
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.16rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 p {
   margin: 0 0 1em;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--text);
 }
 
 .container {
@@ -71,28 +184,86 @@ p {
   padding: 0 24px;
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 2rem;
+/* Tabular monospace for every numeral. */
+.num {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.94em;
 }
 
+/* Tracked small-caps label — the only sanctioned caps. */
 .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.78rem;
-  color: #7e89a0;
-  margin: 0 0 1rem;
+  font-family: var(--font-display);
   font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin: 0 0 1rem;
+}
+
+/* Section header — condensed display caps + thin gradient accent rule. */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 1.75rem;
+}
+
+.section-head__text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass);
+  white-space: nowrap;
+  margin: 0;
+}
+
+@media (max-width: 540px) {
+  .section-head__text {
+    white-space: normal;
+  }
+}
+
+.section-head__rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(232, 180, 90, 0.38),
+    var(--hairline) 55%,
+    transparent
+  );
+}
+
+/* Mount fade-up (hero only — honors reduced motion below). */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 280ms var(--ease) both;
 }
 
 /* -------- Nav -------- */
+
 .nav {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(11, 13, 18, 0.82);
+  background: rgba(10, 11, 14, 0.82);
   backdrop-filter: saturate(140%) blur(8px);
-  border-bottom: 1px solid #1a1f2b;
+  border-bottom: 1px solid var(--hairline);
 }
 
 .nav-inner {
@@ -104,35 +275,53 @@ p {
 
 .brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  color: #e7eaf1;
-  font-weight: 700;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text);
 }
 
 .brand-mark {
-  color: #7aa7ff;
+  display: inline-flex;
+  color: var(--brass);
+  line-height: 0;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.06rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .brand-sub {
-  color: #7e89a0;
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding-left: 0.55rem;
+  border-left: 1px solid var(--hairline);
 }
 
 /* -------- Buttons -------- */
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  padding: 0.7rem 1.1rem;
-  border-radius: 10px;
-  border: 1px solid transparent;
+  padding: 0.62rem 1.1rem;
+  border-radius: 6px;
+  border: 1px solid var(--hairline);
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: transform 80ms ease, background 120ms ease, border-color 120ms ease;
+  transition: transform var(--t), background var(--t), border-color var(--t),
+    color var(--t), box-shadow var(--t), filter var(--t);
   white-space: nowrap;
 }
 
@@ -140,52 +329,64 @@ p {
   transform: translateY(-1px);
 }
 
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Primary — brass fill, dark text, never a gradient. */
 .btn-primary {
-  background: linear-gradient(180deg, #6f9dff 0%, #4d78ea 100%);
-  color: #0b0d12;
-  border-color: #6f9dff;
+  background: var(--brass);
+  color: var(--bg0);
+  border-color: transparent;
 }
 
 .btn-primary:hover {
-  color: #0b0d12;
-  background: linear-gradient(180deg, #82abff 0%, #5c86f3 100%);
+  background: var(--brass);
+  color: var(--bg0);
+  border-color: transparent;
+  filter: brightness(1.08);
+  box-shadow: 0 2px 12px rgba(232, 180, 90, 0.28);
+}
+
+.btn-primary:active {
+  filter: brightness(0.96);
+  box-shadow: none;
 }
 
 .btn-secondary {
-  background: #1a2030;
-  color: #e7eaf1;
-  border-color: #2a3145;
+  background: var(--bg2);
+  color: var(--text);
+  border-color: var(--hairline);
 }
 
 .btn-secondary:hover {
-  background: #222a3e;
-  color: #fff;
+  background: var(--bg3);
+  color: var(--text);
+  border-color: var(--hairline-hover);
 }
 
 .btn-ghost {
   background: transparent;
-  color: #c7cfe0;
-  border-color: #2a3145;
+  color: var(--text-2);
+  border-color: var(--hairline);
 }
 
 .btn-ghost:hover {
-  color: #fff;
-  border-color: #3a4363;
+  color: var(--text);
+  border-color: var(--hairline-hover);
 }
 
 .btn-lg {
-  padding: 0.9rem 1.4rem;
+  padding: 0.85rem 1.5rem;
   font-size: 1rem;
-  border-radius: 12px;
+  border-radius: 6px;
 }
 
 /* -------- Hero -------- */
+
 .hero {
-  padding: 72px 0 56px;
-  background:
-    radial-gradient(1200px 500px at 50% -10%, rgba(111, 157, 255, 0.16), transparent 60%),
-    linear-gradient(180deg, #0b0d12 0%, #0b0d12 100%);
-  border-bottom: 1px solid #1a1f2b;
+  padding: 76px 0 60px;
+  border-bottom: 1px solid var(--hairline);
 }
 
 .hero-inner {
@@ -203,33 +404,43 @@ p {
 }
 
 .lead {
-  color: #b7c0d2;
-  font-size: 1.1rem;
+  color: var(--text-2);
+  font-size: 1.08rem;
+  line-height: 1.6;
   max-width: 52ch;
 }
 
 .cta-row {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .cta-note {
-  color: #8792aa;
-  font-size: 0.92rem;
+  color: var(--text-3);
+  font-size: 0.88rem;
+  max-width: 34ch;
+  line-height: 1.5;
 }
 
-.hero-shot {
+/* -------- Screenshot frames -------- */
+
+.hero-shot,
+.replays-shot {
   margin: 0;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
-  background: #11151f;
-  border: 1px solid #1d2333;
-  box-shadow:
-    0 30px 60px -30px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(111, 157, 255, 0.06);
+  background: var(--bg1);
+  border: 1px solid var(--hairline);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  transition: border-color var(--t);
+}
+
+.hero-shot:hover,
+.replays-shot:hover {
+  border-color: var(--hairline-hover);
 }
 
 .hero-shot img {
@@ -237,58 +448,59 @@ p {
   width: 100%;
   aspect-ratio: 2100 / 1360;
   object-fit: cover;
-  background: #11151f;
+  background: var(--bg1);
 }
 
-.hero-shot figcaption {
+.hero-shot figcaption,
+.replays-shot figcaption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 10px 14px;
-  font-size: 0.85rem;
-  color: #7e89a0;
-  border-top: 1px solid #1d2333;
-  background: #0f121a;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  border-top: 1px solid var(--hairline);
+  background: var(--bg2);
+}
+
+.hero-shot figcaption::before,
+.replays-shot figcaption::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--brass);
+  opacity: 0.7;
 }
 
 /* -------- Demo video -------- */
+
 .demo {
   padding: 64px 0;
-  background: #0c0f16;
-  border-bottom: 1px solid #1a1f2b;
-}
-
-.video-frame {
-  max-width: 960px;
-  margin: 0 auto;
-  aspect-ratio: 16 / 9;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #000;
-  border: 1px solid #1d2333;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
-}
-
-.video-frame video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  border-bottom: 1px solid var(--hairline);
 }
 
 .demo-note {
   max-width: 640px;
   margin: 0 auto;
   padding: 18px 24px;
-  border-radius: 12px;
-  background: #0f121a;
-  border: 1px solid #1d2333;
-  color: #7e89a0;
+  border-radius: 10px;
+  background: var(--bg1);
+  border: 1px solid var(--hairline);
+  color: var(--text-3);
   text-align: center;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: 0.92rem;
 }
 
 /* -------- Features -------- */
+
 .features {
   padding: 64px 0;
-  border-bottom: 1px solid #1a1f2b;
+  border-bottom: 1px solid var(--hairline);
 }
 
 .feature-list {
@@ -306,37 +518,79 @@ p {
   }
 }
 
+/* Feature card — surface with a mode-accent hairline along the top. */
 .feature {
-  background: #11151f;
-  border: 1px solid #1d2333;
-  border-radius: 14px;
+  position: relative;
+  background: var(--bg1);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
   padding: 24px;
+  overflow: hidden;
+  transition: border-color var(--t), transform var(--t);
+}
+
+.feature::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--feature-accent, var(--brass)),
+    transparent 70%
+  );
+  opacity: 0.65;
+}
+
+.feature:hover {
+  border-color: var(--hairline-hover);
+  transform: translateY(-1px);
+}
+
+.feature--rta {
+  --feature-accent: var(--accent-rta);
+}
+
+.feature--gw {
+  --feature-accent: var(--accent-gw);
+}
+
+.feature--box {
+  --feature-accent: var(--accent-box);
 }
 
 .feature p {
-  color: #b7c0d2;
+  color: var(--text-2);
+  font-size: 0.94rem;
   margin: 0;
 }
 
 .feature-icon {
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: 6px;
   display: grid;
   place-items: center;
-  background: rgba(111, 157, 255, 0.12);
-  color: #8ab4ff;
-  font-size: 1.1rem;
+  color: var(--feature-accent, var(--brass));
+  background: color-mix(in srgb, var(--feature-accent, var(--brass)) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--feature-accent, var(--brass)) 30%, transparent);
   margin-bottom: 14px;
 }
 
+@supports not (background: color-mix(in srgb, red 10%, transparent)) {
+  .feature-icon {
+    background: var(--bg2);
+    border: 1px solid var(--hairline);
+  }
+}
+
 /* -------- Replays differentiator -------- */
+
 .replays {
   padding: 72px 0;
-  background:
-    radial-gradient(900px 400px at 100% 0%, rgba(111, 157, 255, 0.1), transparent 60%),
-    #0c0f16;
-  border-bottom: 1px solid #1a1f2b;
+  border-bottom: 1px solid var(--hairline);
 }
 
 .replays-inner {
@@ -353,45 +607,29 @@ p {
 }
 
 .replays-copy p {
-  color: #b7c0d2;
+  color: var(--text-2);
   max-width: 52ch;
-}
-
-.replays-shot {
-  margin: 0;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #11151f;
-  border: 1px solid #1d2333;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
 }
 
 .replays-shot img {
   width: 100%;
   aspect-ratio: 1780 / 470;
   object-fit: cover;
-  background: #11151f;
-}
-
-.replays-shot figcaption {
-  padding: 10px 14px;
-  font-size: 0.85rem;
-  color: #7e89a0;
-  border-top: 1px solid #1d2333;
-  background: #0f121a;
+  background: var(--bg1);
 }
 
 /* -------- Pricing / download -------- */
+
 .pricing {
   padding: 80px 0;
   text-align: center;
 }
 
 .pricing-sub {
-  color: #b7c0d2;
-  font-size: 1.05rem;
+  color: var(--text-2);
+  font-size: 1.02rem;
   max-width: 56ch;
-  margin: 0 auto 1.75rem;
+  margin: 0 auto 2rem;
 }
 
 .download-row {
@@ -403,40 +641,57 @@ p {
 }
 
 .download-alt {
-  color: #9aa4bd;
+  color: var(--text-2);
   font-size: 0.88rem;
   margin: 0 0 1.25rem;
 }
 
 .download-alt a {
-  color: #8ab4ff;
+  color: var(--text);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-color: rgba(232, 180, 90, 0.5);
+  text-underline-offset: 3px;
+}
+
+.download-alt a:hover {
+  text-decoration-color: var(--brass);
 }
 
 .download-note {
-  color: #8792aa;
-  font-size: 0.85rem;
-  max-width: 56ch;
-  margin: 0 auto 1.25rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-3);
+  font-size: 0.78rem;
+  max-width: 60ch;
+  margin: 0 auto 2rem;
+}
+
+/* Honest install instructions — a quiet footnote. */
+.install-foot {
+  max-width: 600px;
+  margin: 2.5rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--hairline);
+  text-align: left;
 }
 
 .pricing-foot {
-  color: #7e89a0;
-  font-size: 0.9rem;
-  max-width: 56ch;
-  margin: 0 auto;
+  color: var(--text-3);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .pricing-foot + .pricing-foot {
-  margin-top: 0.6rem;
+  margin-top: 0.7rem;
 }
 
 /* -------- Footer -------- */
+
 .foot {
-  border-top: 1px solid #1a1f2b;
+  border-top: 1px solid var(--hairline);
   padding: 24px 0;
-  background: #0a0c11;
 }
 
 .foot-inner {
@@ -445,8 +700,8 @@ p {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  color: #7e89a0;
-  font-size: 0.9rem;
+  color: var(--text-3);
+  font-size: 0.88rem;
 }
 
 .foot nav {
@@ -455,9 +710,29 @@ p {
 }
 
 .foot a {
-  color: #a9b3c9;
+  color: var(--text-2);
 }
 
 .foot a:hover {
-  color: #fff;
+  color: var(--text);
+}
+
+/* -------- Reduced motion -------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .rise {
+    animation: none;
+  }
 }
